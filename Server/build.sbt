@@ -5,5 +5,5 @@ ThisBuild / scalaVersion := "3.7.0"
 lazy val root = (project in file("."))
   .settings(
     name := "Server",
-    libraryDependencies += "org.scalafx" %% "scalafx" % "24.0.0-R35"
+    libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
   )
