@@ -68,7 +68,6 @@ object ServerEngine extends LazyLogging:
     logger.info("Sent top deals to both players.")
     
     // Send trump request to nondealer
-  
     broadcast(CallingTrump(trumpCaller))
     logger.info(s"Sent trump request to player $trumpCaller")
 
