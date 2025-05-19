@@ -1,0 +1,44 @@
+.text-field {
+    -fx-font-weight: Bold;
+    -fx-font-family: "Courier New";
+    -fx-text-fill: Black;
+    -fx-font-size: 26;
+    -fx-opacity: 1;
+    -fx-border-color: Black;
+}
+
+#playButton {
+    -fx-background-color: Chartreuse;
+    -fx-background-radius: 50%;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: Bold;
+    -fx-border: 40px;
+    -fx-border-radius: 50%;
+    -fx-border-color: Green;
+    -fx-font-size: 36;
+}
+
+/* Hover: light glow in Chartreuse */
+#playButton:hover {
+    -fx-background-color: derive(Chartreuse, 20%);
+    -fx-effect: dropshadow(
+            gaussian,
+            Chartreuse,   /* glow color */
+            15,           /* radius */
+            0.2,          /* spread */
+            0, 0          /* offset x,y */
+    );
+}
+
+/* Pressed: darker fill + slight “inset” */
+#playButton:pressed {
+    -fx-background-color: derive(Chartreuse, -20%);
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.2),
+            4,
+            0.3,
+            0, 1
+    );
+}
