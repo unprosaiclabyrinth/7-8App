@@ -1,10 +1,35 @@
+/*.text-field {*/
+
+/*    -fx-text-fill: Black;*/
+
+/*    -fx-opacity: 1;*/
+/*    -fx-border-color: Black;*/
+/*}*/
 .text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #555;
+    -fx-padding: 6 0 6 12;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(255,255,255,0.5);
+    -fx-transition: border-color 200ms, -fx-effect 200ms;
     -fx-font-weight: Bold;
     -fx-font-family: "Courier New";
-    -fx-text-fill: Black;
     -fx-font-size: 26;
+}
+
+.text-field:focused {
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: #29b6f6;
+    -fx-effect: dropshadow(gaussian, rgba(41,182,246,0.4), 8, 0, 0, 0);
+}
+
+#errorField {
+    -fx-alignment: center;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: red;
     -fx-opacity: 1;
-    -fx-border-color: Black;
 }
 
 #playButton {
