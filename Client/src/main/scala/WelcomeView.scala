@@ -2,11 +2,12 @@ import scalafx.application.JFXApp3
 import scalafx.geometry.Pos
 import scalafx.scene.control.{Button, TextField}
 import scalafx.scene.layout.{HBox, VBox}
+import com.typesafe.scalalogging.LazyLogging
 
 import java.io.{ObjectInputStream, ObjectOutputStream}
 import scala.util.{Failure, Success}
 
-object WelcomeView extends JFXApp3:
+object WelcomeView extends JFXApp3 with LazyLogging:
   override def start(): Unit =
     val hostField = new TextField {
       id = "hostField"
@@ -59,7 +60,7 @@ object WelcomeView extends JFXApp3:
 
       Player.connectTo(host, port) match
         case Success(sock) =>
-          println(s"Connected to ${sock.getInetAddress}:${sock.getPort}")
+          logger.info(s"Connected to ${sock.getInetAddress}:${sock.getPort}.")
           Player.socket = sock
           Player.out = ObjectOutputStream(sock.getOutputStream)
           Player.in = ObjectInputStream(sock.getInputStream)
@@ -67,7 +68,10 @@ object WelcomeView extends JFXApp3:
             case WaitingFor1ToStart =>
               stage = Player.setStage("Lobby", LobbyView.root, 400, 400, "/css/lobby.css")
               LobbyView.startAnimation()
-            case _ => System.exit(1) // server error
+              logger.info("Waiting for another player.")
+            case _ =>
+              logger.info("Unexpected error @ WelcomeView:73!!!")
+              System.exit(1)
         case Failure(_) =>
           errorField.text = s"Connection failed."
           errorField.visible = true
