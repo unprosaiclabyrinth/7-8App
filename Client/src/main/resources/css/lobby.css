@@ -1,7 +1,12 @@
 .text-field {
     -fx-background-color: transparent;
-    -fx-text-fill: LightSalmon;
+    -fx-text-fill: Aqua;
     -fx-font-family: "Courier New";
+    -fx-font-weight: Bold;
     -fx-font-size: 21;
     -fx-alignment: center;
+}
+
+#dotBox {
+    -fx-padding: 100 0 0 0;
 }
