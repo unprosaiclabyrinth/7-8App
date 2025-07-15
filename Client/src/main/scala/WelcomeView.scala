@@ -63,9 +63,13 @@ object WelcomeView extends JFXApp3:
           Player.socket = sock
           Player.out = ObjectOutputStream(sock.getOutputStream)
           Player.in = ObjectInputStream(sock.getInputStream)
+          Player.recv match
+            case WaitingFor1ToStart =>
+              stage = Player.setStage("Lobby", LobbyView(), 400, 400, "/css/lobby.css")
+            case _ => System.exit(1) // server error
         case Failure(_) =>
           errorField.text = s"Connection failed."
           errorField.visible = true
           errorField.managed = true
-    
+
     stage = Player.setStage("Welcome", root, 400, 400, "/css/welcome.css")
