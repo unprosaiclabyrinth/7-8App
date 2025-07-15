@@ -4,6 +4,7 @@ import scalafx.scene.{Parent, Scene}
 import java.io.{ObjectInputStream, ObjectOutputStream}
 import java.net.Socket
 import scala.compiletime.uninitialized
+import scala.concurrent.blocking
 import scala.util.Try
 
 object Player:
@@ -23,3 +24,10 @@ object Player:
         stylesheets.add(getClass.getResource(css).toExternalForm)
       }
     }
+
+  def send(msg: Message): Unit =
+    out.writeObject(msg)
+    out.flush()
+
+  def recv: Message =
+    blocking(in.readObject.asInstanceOf[Message])
