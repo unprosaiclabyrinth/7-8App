@@ -3,7 +3,7 @@ import java.io.InputStream
 import Rank.*
 import Suit.*
 
-class Card(val rank: Rank, val suit: Suit):
+class Card(val rank: Rank, val suit: Suit) extends Serializable:
   val image: InputStream = getClass.getResourceAsStream(s"/${rank.value}${suit.initial}.jpeg")
   
   override def toString: String = rank.str + suit.str

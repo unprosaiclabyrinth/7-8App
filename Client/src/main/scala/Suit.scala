@@ -1,4 +1,4 @@
-enum Suit(val initial: Char, val str: Char):
+enum Suit(val initial: Char, val str: Char) extends Serializable:
   case Spades extends Suit('S', '♠')
   case Hearts extends Suit('H', '♥')
   case Diamonds extends Suit('D', '♦')

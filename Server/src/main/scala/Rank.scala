@@ -1,4 +1,4 @@
-enum Rank(val value: Int, val str: String):
+enum Rank(val value: Int, val str: String) extends Serializable:
   case Zero extends Rank(0, "X") // placeholder/backside
   case Two extends Rank(2, "2")
   case Three extends Rank(3, "3")
