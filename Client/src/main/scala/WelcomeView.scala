@@ -73,8 +73,9 @@ object WelcomeView extends JFXApp3 with LazyLogging:
               logger.info("Unexpected error @ WelcomeView:73!!!")
               System.exit(1)
         case Failure(_) =>
-          errorField.text = ""
-          Thread.sleep(500)
+          if errorField.text.value != "" then
+            errorField.text = ""
+            Thread.sleep(500)
           errorField.text = s"Connection failed."
           errorField.visible = true
           errorField.managed = true
